@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const path = require("path");
+const port = process.env.PORT || 5000;
+
 const { User, Vacation, Follower, Op, sequelize } = require('./models');
 
 const { cloudinary } = require('./utils/cloudinary');
@@ -13,6 +16,7 @@ app.use(express.json({
     limit: '100mb'
 }));
 
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 //register
 app.post('/register', async (req, res) => {
@@ -225,6 +229,11 @@ app.get('/vacations/graph', async (req, res) => {
     res.send(graphData)
 })
 
-app.listen(5000, () => {
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+app.listen(port, () => {
     console.log('the server is listening on port 5000')
 })
