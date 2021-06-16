@@ -235,5 +235,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('the server is listening on port 5000')
+    console.log(`the server is listening on port ${port}`)
 })
