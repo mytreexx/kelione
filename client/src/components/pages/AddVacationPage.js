@@ -6,6 +6,8 @@ import Input from '../UI-components/Input';
 import Button from '../UI-components/Button';
 import Header from '../UI-components/Header';
 import Spinner from '../UI-components/Spinner';
+import isAdmin from '../../utils';
+
 
 const AddVacationPage = ({ currentUser }) => {
     const [description, setDescription] = useState();
@@ -20,7 +22,7 @@ const AddVacationPage = ({ currentUser }) => {
 
     if (!currentUser) {
         history.push('/');
-    } else if (currentUser !== 'admin') {
+    } else if (!isAdmin(currentUser)) {
         history.push('/vacations');
     }
 
@@ -41,9 +43,7 @@ const AddVacationPage = ({ currentUser }) => {
     const previewFile = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            setImage(reader.result);
-        };
+        reader.onloadend = () => setImage(reader.result);
     };
 
     const handleSubmit = (e) => {
@@ -79,9 +79,7 @@ const AddVacationPage = ({ currentUser }) => {
                     label="Destination"
                     type="text"
                     value={destination}
-                    onChange={(e) => {
-                        setDestination(e.target.value);
-                    }}
+                    onChange={(e) => setDestination(e.target.value)}
                 />
 
                 <Input
@@ -91,9 +89,7 @@ const AddVacationPage = ({ currentUser }) => {
                     label="Description"
                     type="text"
                     value={description}
-                    onChange={(e) => {
-                        setDescription(e.target.value);
-                    }}
+                    onChange={(e) => setDescription(e.target.value)}
                 />
 
                 <Input
@@ -106,27 +102,21 @@ const AddVacationPage = ({ currentUser }) => {
                     label="Starting Date"
                     type="date"
                     value={startingDate}
-                    onChange={(e) => {
-                        setStartingDate(e.target.value);
-                    }}
+                    onChange={(e) => setStartingDate(e.target.value)}
                 />
 
                 <Input
                     label="Ending Date"
                     type="date"
                     value={endingDate}
-                    onChange={(e) => {
-                        setEndingDate(e.target.value);
-                    }}
+                    onChange={(e) => setEndingDate(e.target.value)}
                 />
 
                 <Input
                     label="Price"
                     type="number"
                     value={price}
-                    onChange={(e) => {
-                        setPrice(e.target.value);
-                    }}
+                    onChange={(e) => setPrice(e.target.value)}
                 />
 
                 <Button type="button" medium light onClick={clearForm}>
@@ -137,6 +127,7 @@ const AddVacationPage = ({ currentUser }) => {
                     Add
                 </Button>
             </form>
+
             {isLoading && <Spinner />}
             {image && !isLoading && <img src={image} alt="preview" />}
         </Container>

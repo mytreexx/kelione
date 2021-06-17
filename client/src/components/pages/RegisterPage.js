@@ -43,12 +43,12 @@ const RegisterPage = ({ currentUser }) => {
         };
 
         fetch(`/register`, requestOptions).then((response) => {
-            if (!response.ok) {
+            if (response.ok) {
+                history.push('/login');
+            } else {
                 response
                     .text()
                     .then((message) => toast.error('oops! ' + message));
-            } else {
-                history.push('/login');
             }
         });
     };

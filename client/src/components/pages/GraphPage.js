@@ -4,13 +4,15 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 import Header from '../UI-components/Header';
+import isAdmin from '../../utils';
+
 
 const GraphPage = ({ currentUser }) => {
     const history = useHistory();
 
     if (!currentUser) {
         history.push('/');
-    } else if (currentUser !== 'admin') {
+    } else if (!isAdmin(currentUser)) {
         history.push('/vacations');
     }
 

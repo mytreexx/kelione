@@ -16,10 +16,10 @@ function App() {
     );
 
     useEffect(() => {
-        if (!currentUser) {
-            localStorage.removeItem('currentUser');
-        } else {
+        if (currentUser) {
             localStorage.setItem('currentUser', currentUser);
+        } else {
+            localStorage.removeItem('currentUser');
         }
     }, [currentUser]);
 
