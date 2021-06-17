@@ -7,6 +7,7 @@ import Button from '../UI-components/Button';
 import Header from '../UI-components/Header';
 import Spinner from '../UI-components/Spinner';
 import { isAdmin } from '../../utils';
+import { addNewVacation } from '../../services';
 
 
 const AddVacationPage = ({ currentUser }) => {
@@ -66,7 +67,7 @@ const AddVacationPage = ({ currentUser }) => {
             }),
         };
 
-        fetch(`/vacations/new`, requestOptions).then(() =>
+        addNewVacation(requestOptions).then(() =>
             history.push('/edit')
         );
     };

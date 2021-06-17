@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import Header from '../UI-components/Header';
 import { isAdmin } from '../../utils';
+import { getGraphData } from '../../services';
 
 
 const GraphPage = ({ currentUser }) => {
@@ -17,10 +18,10 @@ const GraphPage = ({ currentUser }) => {
     }
 
     const [vacationFollowers, setVacationFollowers] = useState([]);
+
     useEffect(() => {
-        fetch(`/vacations/graph`)
-            .then((res) => res.json())
-            .then(
+        getGraphData()
+        .then(
                 (result) => {
                     setVacationFollowers(
                         result.map((vacation) => ({

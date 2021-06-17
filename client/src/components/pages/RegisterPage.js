@@ -9,6 +9,7 @@ import Input from '../UI-components/Input';
 import Header from '../UI-components/Header';
 import logo from '../../assets/logoIcon.jpg';
 import { isAdmin } from '../../utils';
+import { register } from '../../services';
 
 
 const RegisterPage = ({ currentUser }) => {
@@ -41,16 +42,17 @@ const RegisterPage = ({ currentUser }) => {
                 confirmPassword,
             }),
         };
-
-        fetch(`/register`, requestOptions).then((response) => {
-            if (response.ok) {
-                history.push('/login');
-            } else {
-                response
-                    .text()
-                    .then((message) => toast.error('oops! ' + message));
-            }
-        });
+        
+        register(requestOptions)
+            .then((response) => {
+                if (response.ok) {
+                    history.push('/login');
+                } else {
+                    response
+                        .text()
+                        .then((message) => toast.error('oops! ' + message));
+                }
+            });
     };
 
     return (

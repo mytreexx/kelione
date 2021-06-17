@@ -9,6 +9,7 @@ import Spinner from '../UI-components/Spinner';
 import Header from '../UI-components/Header';
 import Search from '../UI-components/Search';
 import { isAdmin } from '../../utils';
+import { deleteVacationRequest, editVacation, followOrUnfollow, getVacationsList } from '../../services';
 
 
 const VacationsPage = ({ currentUser }) => {
@@ -35,8 +36,7 @@ const VacationsPage = ({ currentUser }) => {
             }),
         };
 
-        fetch(`/vacations`, requestOptions)
-            .then((result) => result.json())
+        getVacationsList(requestOptions)
             .then((result) => {
                 setVacations(result.vacations);
                 setFollowedVacations(
@@ -60,7 +60,7 @@ const VacationsPage = ({ currentUser }) => {
             body: JSON.stringify(editedVacation),
         };
 
-        fetch('/vacation', requestOptions);
+        editVacation(requestOptions);
     };
 
     const deleteVaction = (deletedVacation) => {
@@ -76,7 +76,7 @@ const VacationsPage = ({ currentUser }) => {
             }),
         };
 
-        fetch('/vacation', requestOptions);
+        deleteVacationRequest(requestOptions);
     };
 
     const toggleFollow = (vacation) => {
@@ -91,7 +91,7 @@ const VacationsPage = ({ currentUser }) => {
             }),
         };
 
-        fetch('/follow', requestOptions);
+        followOrUnfollow(requestOptions);
 
         if (isFollowed) {
             setFollowedVacations(

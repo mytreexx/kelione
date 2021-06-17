@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Button from '../UI-components/Button';
 import Input from '../UI-components/Input';
+import { search } from '../../services';
 
 const Search = ({ setVacations, getVacations }) => {
     const [description, setDescription] = useState();
@@ -17,8 +18,7 @@ const Search = ({ setVacations, getVacations }) => {
     };
 
     const searchVacations = () => {
-        fetch(`/vacations/search/?searchTerm=${description}&startingDate=${startingDate}&endingDate=${endingDate}`)
-            .then((res) => res.json())
+        search(description, startingDate, endingDate)
             .then(
                 (result) => setVacations(result),
                 (error) => console.error(error)

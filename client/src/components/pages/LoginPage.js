@@ -9,6 +9,7 @@ import Input from '../UI-components/Input';
 import Header from '../UI-components/Header';
 import logo from '../../assets/logoIcon.jpg';
 import { isAdmin } from '../../utils';
+import {login} from '../../services';
 
 
 const LoginPage = ({ onUserChange, currentUser }) => {
@@ -36,18 +37,19 @@ const LoginPage = ({ onUserChange, currentUser }) => {
             }),
         };
 
-        fetch(`/login`, requestOptions).then((response) => {
-            if (response.ok === false) {
-                response
-                    .text()
-                    .then((message) => toast.error('oops! ' + message));
-            } else if (response.ok) {
-                response.text().then((userNameFromServer) => {
-                    onUserChange(userNameFromServer);
-                    history.push('/vacations');
-                });
-            }
-        });
+        login(requestOptions)
+            .then((response) => {
+                if (response.ok === false) {
+                    response
+                        .text()
+                        .then((message) => toast.error('oops! ' + message));
+                } else if (response.ok) {
+                    response.text().then((userNameFromServer) => {
+                        onUserChange(userNameFromServer);
+                        history.push('/vacations');
+                    });
+                }
+            });
     };
 
     return (
