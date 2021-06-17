@@ -17,9 +17,7 @@ const Search = ({ setVacations, getVacations }) => {
     };
 
     const searchVacations = () => {
-        fetch(
-            `/?searchTerm=${description}&startingDate=${startingDate}&endingDate=${endingDate}`
-        )
+        fetch(`/vacations/search/?searchTerm=${description}&startingDate=${startingDate}&endingDate=${endingDate}`)
             .then((res) => res.json())
             .then(
                 (result) => setVacations(result),

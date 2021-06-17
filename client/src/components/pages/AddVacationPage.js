@@ -66,7 +66,7 @@ const AddVacationPage = ({ currentUser }) => {
             }),
         };
 
-        fetch('/vacation', requestOptions).then(() =>
+        fetch(`/vacations/new`, requestOptions).then(() =>
             history.push('/edit')
         );
     };

@@ -6,6 +6,7 @@ import logo from '../../assets/logoIcon.jpg';
 import Button from '../UI-components/Button';
 import { isAdmin } from '../../utils';
 
+
 const LandingPage = ({ currentUser }) => {
     const history = useHistory();
 
