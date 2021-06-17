@@ -1,9 +1,8 @@
 const { Sequelize, Op, DataTypes } = require("sequelize");
 
-const sequelize = new Sequelize('vacations', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql'
-});
+const databaseUrl = process.env.CLEARDB_DATABASE_URL || 'mysql://root:@localhost:3306/vacations';
+
+const sequelize = new Sequelize(databaseUrl); 
 
 const testConnection = async () => {
     try {
