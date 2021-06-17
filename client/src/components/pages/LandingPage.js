@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import logo from '../../assets/logoIcon.jpg';
 import Button from '../UI-components/Button';
-import isAdmin from '../../utils';
+import { isAdmin } from '../../utils';
 
 const LandingPage = ({ currentUser }) => {
     const history = useHistory();

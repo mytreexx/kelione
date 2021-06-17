@@ -1,5 +1,5 @@
-const isAdmin = (user) => {
-    return(user === 'admin');
+export const isAdmin = (user) => {
+    return (user === 'admin');
 }
 
-export default isAdmin;
+export const dateFormat = (dateString) =>dateString.split('-').reverse().join('/');

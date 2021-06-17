@@ -8,7 +8,7 @@ import VacationCard from '../UI-components/VacationCard';
 import Spinner from '../UI-components/Spinner';
 import Header from '../UI-components/Header';
 import Search from '../UI-components/Search';
-import isAdmin from '../../utils';
+import { isAdmin } from '../../utils';
 
 
 const VacationsPage = ({ currentUser }) => {
@@ -121,9 +121,7 @@ const VacationsPage = ({ currentUser }) => {
     return (
         <Container>
             <Search
-                setVacations={(newVacations) =>
-                    setVacations(sortVacations(newVacations))
-                }
+                setVacations={(newVacations) => setVacations(sortVacations(newVacations))}
                 getVacations={getVacations}
             />
 

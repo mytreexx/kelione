@@ -6,7 +6,7 @@ import Input from '../UI-components/Input';
 import Button from '../UI-components/Button';
 import Header from '../UI-components/Header';
 import Spinner from '../UI-components/Spinner';
-import isAdmin from '../../utils';
+import { isAdmin } from '../../utils';
 
 
 const AddVacationPage = ({ currentUser }) => {

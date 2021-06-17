@@ -8,7 +8,7 @@ import Button from '../UI-components/Button';
 import Input from '../UI-components/Input';
 import Header from '../UI-components/Header';
 import logo from '../../assets/logoIcon.jpg';
-import isAdmin from '../../utils';
+import { isAdmin } from '../../utils';
 
 
 const RegisterPage = ({ currentUser }) => {
@@ -75,45 +75,35 @@ const RegisterPage = ({ currentUser }) => {
                     label="First name"
                     type="text"
                     value={firstName}
-                    onChange={(e) => {
-                        setFirstName(e.target.value);
-                    }}
+                    onChange={(e) => setFirstName(e.target.value)}
                 />
 
                 <Input
                     label="Last name"
                     type="text"
                     value={lastName}
-                    onChange={(e) => {
-                        setLastName(e.target.value);
-                    }}
+                    onChange={(e) => setLastName(e.target.value)}
                 />
 
                 <Input
                     label="Username"
                     type="text"
                     value={username}
-                    onChange={(e) => {
-                        setUsername(e.target.value);
-                    }}
+                    onChange={(e) => setUsername(e.target.value)}
                 />
 
                 <Input
                     label="Password"
                     type="password"
                     value={password}
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                    }}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <Input
                     label="Confirm password"
                     type="password"
                     value={confirmPassword}
-                    onChange={(e) => {
-                        setConfirmPassword(e.target.value);
-                    }}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                 />
 
                 <Button type="submit" medium>

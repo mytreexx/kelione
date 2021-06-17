@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logoIcon.jpg';
 import Button from '../UI-components/Button';
-import isAdmin from '../../utils';
+import { isAdmin } from '../../utils';
 
 
 const NavBar = ({ currentUser, logout }) => {

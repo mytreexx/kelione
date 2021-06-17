@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { HeartIcon, HeartFillIcon, TrashIcon, PencilIcon, CheckCircleIcon, XCircleIcon } from '@primer/octicons-react';
-import isAdmin from '../../utils';
+import { isAdmin } from '../../utils';
+import { dateFormat } from '../../utils';
 
 const VacationCard = ({
     id,
@@ -24,8 +25,6 @@ const VacationCard = ({
     const [endingDateInput, setEndingDateInput] = useState(endingDate);
     const [priceInput, setPriceInput] = useState(price);
     const [imageInput, setImageInput] = useState(image);
-
-    const dateFormat = (dateString) => dateString.split('-').reverse().join('/');
 
     const confirmEdit = () => {
         setEditMode(false);
