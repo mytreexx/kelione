@@ -35,5 +35,3 @@ CREATE TABLE followers (
 
 INSERT INTO users (first_name, last_name, username, `password`, is_admin)
 VALUES ("admin", "admin", "admin", "admin", 1 );
-
-DELETE FROM `users` WHERE `id` = 8;
