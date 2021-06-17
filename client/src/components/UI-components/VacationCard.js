@@ -1,14 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import {
-    HeartIcon,
-    HeartFillIcon,
-    TrashIcon,
-    PencilIcon,
-    CheckCircleIcon,
-    XCircleIcon,
-} from '@primer/octicons-react';
-
+import { HeartIcon, HeartFillIcon, TrashIcon, PencilIcon, CheckCircleIcon, XCircleIcon } from '@primer/octicons-react';
 
 const VacationCard = ({
     id,
@@ -18,11 +10,10 @@ const VacationCard = ({
     description,
     startingDate,
     endingDate,
-    price,
-    image,
+    price, image,
     onDeleted,
     onFollowClicked,
-    onEditConfirmed,
+    onEditConfirmed
 }) => {
     const [editMode, setEditMode] = useState(false);
 
@@ -33,9 +24,7 @@ const VacationCard = ({
     const [priceInput, setPriceInput] = useState(price);
     const [imageInput, setImageInput] = useState(image);
 
-    const dateFormat = (dateString) => {
-        return dateString.split('-').reverse().join('/');
-    };
+    const dateFormat = (dateString) => dateString.split('-').reverse().join('/');
 
     const confirmEdit = () => {
         setEditMode(false);
@@ -49,6 +38,7 @@ const VacationCard = ({
             endingDate: endingDateInput,
             price: priceInput,
         };
+
         onEditConfirmed(editedVacation);
     };
 
@@ -61,9 +51,7 @@ const VacationCard = ({
         const reader = new FileReader();
 
         reader.readAsDataURL(file);
-        reader.onload = function () {
-            setImageInput(reader.result);
-        };
+        reader.onload = () => setImageInput(reader.result);
     };
 
     const cancelEditMode = () => {
@@ -82,20 +70,18 @@ const VacationCard = ({
                 <EditingImageContainer
                     style={{ backgroundImage: `url(${image})` }}
                 >
-                    <input onChange={handleFileInputChange} type='file' />
+                    <input onChange={handleFileInputChange} type="file" />
                 </EditingImageContainer>
             ) : (
                 <img src={imageInput} alt={destination} />
             )}
 
             <ContentContainer>
-                <div className='space-between'>
+                <div className="space-between">
                     {editMode ? (
                         <input
-                            type='text'
-                            onChange={(e) => {
-                                setDestinationInput(e.target.value);
-                            }}
+                            type="text"
+                            onChange={(e) => setDestinationInput(e.target.value)}
                             value={destinationInput}
                         />
                     ) : (
@@ -107,20 +93,27 @@ const VacationCard = ({
                             {editMode ? (
                                 <>
                                     <button onClick={() => cancelEditMode()}>
-                                        <XCircleIcon size={24} fill='#ED8047' />
+                                        <XCircleIcon size={24} fill="#ED8047" />
                                     </button>
 
                                     <button onClick={() => confirmEdit()}>
-                                        <CheckCircleIcon size={24} fill='#1D7A8C' />
+                                        <CheckCircleIcon
+                                            size={24}
+                                            fill="#1D7A8C"
+                                        />
                                     </button>
                                 </>
                             ) : (
                                 <>
                                     <button onClick={enterEditMode}>
-                                        <PencilIcon size={24} fill='#1D7A8C' />
+                                        <PencilIcon size={24} fill="#1D7A8C" />
                                     </button>
 
-                                    <button onClick={() => { onDeleted(id) }} >
+                                    <button
+                                        onClick={() => {
+                                            onDeleted(id);
+                                        }}
+                                    >
                                         <TrashIcon size={24} fill="#ED8047" />
                                     </button>
                                 </>
@@ -128,13 +121,13 @@ const VacationCard = ({
                         </span>
                     ) : (
                         <button
-                            className='pulseAnimation'
+                            className="pulseAnimation"
                             onClick={onFollowClicked}
                         >
                             {isFollowed ? (
-                                <HeartFillIcon size={24} fill='#ED8047' />
+                                <HeartFillIcon size={24} fill="#ED8047" />
                             ) : (
-                                <HeartIcon size={24} fill='#ED8047' />
+                                <HeartIcon size={24} fill="#ED8047" />
                             )}
                         </button>
                     )}
@@ -142,27 +135,33 @@ const VacationCard = ({
 
                 {editMode ? (
                     <textarea
-                        rows='3'
+                        rows="3"
                         value={descriptionInput}
-                        onChange={(e) => { setDescriptionInput(e.target.value) }}
+                        onChange={(e) => {
+                            setDescriptionInput(e.target.value);
+                        }}
                     />
                 ) : (
                     <div>{descriptionInput}</div>
                 )}
 
-                <div className='space-between'>
+                <div className="space-between">
                     {editMode ? (
                         <span>
                             <input
-                                type='date'
+                                type="date"
                                 value={startingDateInput}
-                                onChange={(e) => { setStartingDateInput(e.target.value) }}
+                                onChange={(e) => {
+                                    setStartingDateInput(e.target.value);
+                                }}
                             />
 
                             <input
-                                type='date'
+                                type="date"
                                 value={endingDateInput}
-                                onChange={(e) => { setEndingDateInput(e.target.value) }}
+                                onChange={(e) => {
+                                    setEndingDateInput(e.target.value);
+                                }}
                             />
                         </span>
                     ) : (
@@ -173,9 +172,11 @@ const VacationCard = ({
 
                     {editMode ? (
                         <input
-                            type='number'
+                            type="number"
                             value={priceInput}
-                            onChange={(e) => { setPriceInput(e.target.value) }}
+                            onChange={(e) => {
+                                setPriceInput(e.target.value);
+                            }}
                         />
                     ) : (
                         <span>€{priceInput}</span>

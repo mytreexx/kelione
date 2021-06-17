@@ -4,13 +4,13 @@ import { PlusCircleIcon } from '@primer/octicons-react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-import VacationCard from '../components/VacationCard';
-import Search from '../components/Search';
-import Spinner from '../components/Spinner';
-import Header from '../components/Header';
+import VacationCard from '../UI-components/VacationCard';
+import Spinner from '../UI-components/Spinner';
+import Header from '../UI-components/Header';
+import Search from '../UI-components/Search';
 
 
-const Vacations = ({ currentUser }) => {
+const VacationsPage = ({ currentUser }) => {
     const [vacations, setVacations] = useState([]);
     const [followedVacations, setFollowedVacations] = useState([]);
     const [isLoadingVacations, setIsLoadingVacations] = useState(true);
@@ -59,11 +59,7 @@ const Vacations = ({ currentUser }) => {
             body: JSON.stringify(editedVacation),
         };
 
-        try {
-            fetch('/vacation', requestOptions);
-        } catch (e) {
-            console.error(e);
-        }
+        fetch('/vacation', requestOptions);
     };
 
     const deleteVaction = (deletedVacation) => {
@@ -79,11 +75,7 @@ const Vacations = ({ currentUser }) => {
             }),
         };
 
-        try {
-            fetch('/vacation', requestOptions);
-        } catch (e) {
-            console.error(e);
-        }
+        fetch('/vacation', requestOptions);
     };
 
     const toggleFollow = (vacation) => {
@@ -133,6 +125,7 @@ const Vacations = ({ currentUser }) => {
                 }
                 getVacations={getVacations}
             />
+
             {isLoadingVacations ? (
                 <Spinner />
             ) : (
@@ -172,7 +165,7 @@ const Vacations = ({ currentUser }) => {
     );
 };
 
-export default Vacations;
+export default VacationsPage;
 
 const Container = styled.div`
     display: flex;

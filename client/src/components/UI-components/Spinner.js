@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-import img from '../assets/transparentLogo.png';
-
+import logo from '../../assets/transparentLogo.png';
 
 const Spinner = styled.div`
     width: 100px;
     height: 100px;
-    background-image: url(${img});
+    background-image: url(${logo});
     background-size: contain;
     animation: rotation 2s infinite linear;
     align-self: center;

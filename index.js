@@ -32,7 +32,7 @@ app.post('/register', async (req, res) => {
     } else {
         try {
             await sequelize.sync();
-            const user = await User.create({
+            await User.create({
                 first_name: firstName,
                 last_name: lastName,
                 username,

@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 
-import logo from '../assets/logoIcon.jpg';
-import Button from '../components/Button';
-
+import logo from '../../assets/logoIcon.jpg';
+import Button from '../UI-components/Button';
 
 const LandingPage = ({ currentUser }) => {
     const history = useHistory();
@@ -18,14 +17,14 @@ const LandingPage = ({ currentUser }) => {
     return (
         <Container>
             <H1>kelionė</H1>
-            <img src={logo} alt='logo' />
+            <img src={logo} alt="logo" />
 
             <Button light>
-                <Link to='/register'>Register</Link>
+                <Link to="/register">Register</Link>
             </Button>
 
             <Button>
-                <Link to='/login'>Login</Link>
+                <Link to="/login">Login</Link>
             </Button>
         </Container>
     );

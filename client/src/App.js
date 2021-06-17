@@ -1,14 +1,13 @@
-import { useState, useEffect }       from 'react';
+import { useState, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 
-import LandingPage  from './pages/LandingPage';
-import Login        from './pages/Login';
-import Vacations    from './pages/Vacations';
-import Graph        from './pages/Graph';
-import AddVacation  from './pages/AddVacation';
-import Register     from './pages/Register';
-import NavBar       from './components/NavBar';
-
+import LandingPage from './components/pages/LandingPage';
+import LoginPage from './components/pages/LoginPage';
+import VacationsPage from './components/pages/VacationsPage';
+import GraphPage from './components/pages/GraphPage';
+import AddVacationPage from './components/pages/AddVacationPage';
+import RegisterPage from './components/pages/RegisterPage';
+import NavBar from './components/UI-components/NavBar';
 
 function App() {
     const history = useHistory();
@@ -41,30 +40,30 @@ function App() {
                 </Route>
 
                 <Route path="/register">
-                    <Register currentUser={currentUser} />
+                    <RegisterPage currentUser={currentUser} />
                 </Route>
 
                 <Route path="/login">
-                    <Login
+                    <LoginPage
                         onUserChange={setCurrentUser}
                         currentUser={currentUser}
                     />
                 </Route>
 
                 <Route path="/vacations">
-                    <Vacations currentUser={currentUser} />
+                    <VacationsPage currentUser={currentUser} />
                 </Route>
 
                 <Route path="/edit">
-                    <Vacations currentUser={currentUser} />
+                    <VacationsPage currentUser={currentUser} />
                 </Route>
 
                 <Route path="/graph">
-                    <Graph currentUser={currentUser} />
+                    <GraphPage currentUser={currentUser} />
                 </Route>
 
                 <Route path="/new-vacation">
-                    <AddVacation currentUser={currentUser} />
+                    <AddVacationPage currentUser={currentUser} />
                 </Route>
             </Switch>
         </>

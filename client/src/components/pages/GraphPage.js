@@ -3,10 +3,9 @@ import { ResponsiveBar } from '@nivo/bar';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
-import Header from '../components/Header';
+import Header from '../UI-components/Header';
 
-
-const Graph = ({ currentUser }) => {
+const GraphPage = ({ currentUser }) => {
     const history = useHistory();
 
     if (!currentUser) {
@@ -41,7 +40,7 @@ const Graph = ({ currentUser }) => {
             <ResponsiveBar
                 data={vacationFollowers}
                 keys={['followers']}
-                indexBy='location'
+                indexBy="location"
                 margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
                 padding={0.3}
                 valueScale={{ type: 'linear' }}
@@ -100,7 +99,7 @@ const Graph = ({ currentUser }) => {
     );
 };
 
-export default Graph;
+export default GraphPage;
 
 const Container = styled.div`
     display: flex;

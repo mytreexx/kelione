@@ -4,13 +4,13 @@ import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Button from '../components/Button';
-import logo from '../assets/logoIcon.jpg';
-import Input from '../components/Input';
-import Header from '../components/Header';
+import Button from '../UI-components/Button';
+import Input from '../UI-components/Input';
+import Header from '../UI-components/Header';
+import logo from '../../assets/logoIcon.jpg';
 
 
-const Register = ({ currentUser }) => {
+const RegisterPage = ({ currentUser }) => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [username, setUsername] = useState();
@@ -41,24 +41,22 @@ const Register = ({ currentUser }) => {
             }),
         };
 
-        fetch(`/register`, requestOptions).then(
-            (response) => {
-                if (response.ok === false) {
-                    response
-                        .text()
-                        .then((message) => toast.error('oops! ' + message));
-                } else if (response.ok) {
-                    history.push('/login');
-                }
+        fetch(`/register`, requestOptions).then((response) => {
+            if (!response.ok) {
+                response
+                    .text()
+                    .then((message) => toast.error('oops! ' + message));
+            } else {
+                history.push('/login');
             }
-        );
+        });
     };
 
     return (
         <Container>
-            <img src={logo} alt='logo' />
+            <img src={logo} alt="logo" />
             <ToastContainer
-                position='top-center'
+                position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -69,45 +67,55 @@ const Register = ({ currentUser }) => {
                 pauseOnHover
             />
 
-            <form onSubmit={(event) => handleRegister(event)}>
+            <form onSubmit={handleRegister}>
                 <Header>Create your account</Header>
 
                 <Input
-                    label='First name'
-                    type='text'
+                    label="First name"
+                    type="text"
                     value={firstName}
-                    onChange={(e) => { setFirstName(e.target.value) }}
+                    onChange={(e) => {
+                        setFirstName(e.target.value);
+                    }}
                 />
 
                 <Input
-                    label='Last name'
-                    type='text'
+                    label="Last name"
+                    type="text"
                     value={lastName}
-                    onChange={(e) => { setLastName(e.target.value) }}
+                    onChange={(e) => {
+                        setLastName(e.target.value);
+                    }}
                 />
 
                 <Input
-                    label='Username'
-                    type='text'
+                    label="Username"
+                    type="text"
                     value={username}
-                    onChange={(e) => { setUsername(e.target.value) }}
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                    }}
                 />
 
                 <Input
-                    label='Password'
-                    type='password'
+                    label="Password"
+                    type="password"
                     value={password}
-                    onChange={(e) => { setPassword(e.target.value) }}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
                 />
 
                 <Input
-                    label='Confirm password'
-                    type='password'
+                    label="Confirm password"
+                    type="password"
                     value={confirmPassword}
-                    onChange={(e) => { setConfirmPassword(e.target.value) }}
+                    onChange={(e) => {
+                        setConfirmPassword(e.target.value);
+                    }}
                 />
 
-                <Button type='submit' medium>
+                <Button type="submit" medium>
                     Register
                 </Button>
             </form>
@@ -115,7 +123,7 @@ const Register = ({ currentUser }) => {
     );
 };
 
-export default Register;
+export default RegisterPage;
 
 const Container = styled.div`
     display: flex;

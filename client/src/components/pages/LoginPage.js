@@ -4,13 +4,12 @@ import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Button from '../components/Button';
-import logo from '../assets/logoIcon.jpg';
-import Input from '../components/Input';
-import Header from '../components/Header';
+import Button from '../UI-components/Button';
+import Input from '../UI-components/Input';
+import Header from '../UI-components/Header';
+import logo from '../../assets/logoIcon.jpg';
 
-
-const Login = ({ onUserChange, currentUser }) => {
+const LoginPage = ({ onUserChange, currentUser }) => {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
@@ -35,27 +34,25 @@ const Login = ({ onUserChange, currentUser }) => {
             }),
         };
 
-        fetch(`/login`, requestOptions).then(
-            (response) => {
-                if (response.ok === false) {
-                    response
-                        .text()
-                        .then((message) => toast.error('oops! ' + message));
-                } else if (response.ok) {
-                    response.text().then((userNameFromServer) => {
-                        onUserChange(userNameFromServer);
-                        history.push('/vacations');
-                    });
-                }
+        fetch(`/login`, requestOptions).then((response) => {
+            if (response.ok === false) {
+                response
+                    .text()
+                    .then((message) => toast.error('oops! ' + message));
+            } else if (response.ok) {
+                response.text().then((userNameFromServer) => {
+                    onUserChange(userNameFromServer);
+                    history.push('/vacations');
+                });
             }
-        );
+        });
     };
 
     return (
         <Container>
-            <img src={logo} alt='logo' />
+            <img src={logo} alt="logo" />
             <ToastContainer
-                position='top-center'
+                position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -70,19 +67,24 @@ const Login = ({ onUserChange, currentUser }) => {
                 <Header>Log in to kelionė</Header>
 
                 <Input
-                    label='Username'
-                    type='text'
-                    value={username} onChange={(e) => { setUsername(e.target.value) }}
+                    label="Username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                    }}
                 />
 
                 <Input
-                    label='Password'
-                    type='password'
+                    label="Password"
+                    type="password"
                     value={password}
-                    onChange={(e) => { setPassword(e.target.value) }}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
                 />
 
-                <Button type='submit' medium>
+                <Button type="submit" medium>
                     Log in
                 </Button>
             </form>
@@ -90,7 +92,7 @@ const Login = ({ onUserChange, currentUser }) => {
     );
 };
 
-export default Login;
+export default LoginPage;
 
 const Container = styled.div`
     display: flex;

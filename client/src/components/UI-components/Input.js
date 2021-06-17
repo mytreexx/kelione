@@ -14,8 +14,7 @@ const Container = styled.div`
     flex-direction: column;
     border: 1px gray solid;
     width: 250px;
-    height: ${(props) =>
-        props.height === undefined ? '50px' : `${props.height}`};
+    height: ${(props) => (!props.height ? '50px' : props.height)};
     border-radius: 5px;
     justify-content: space-between;
     padding: 2px;

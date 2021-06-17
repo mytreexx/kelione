@@ -2,13 +2,12 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
-import Input from '../components/Input';
-import Button from '../components/Button';
-import Header from '../components/Header';
-import Spinner from '../components/Spinner';
+import Input from '../UI-components/Input';
+import Button from '../UI-components/Button';
+import Header from '../UI-components/Header';
+import Spinner from '../UI-components/Spinner';
 
-
-const AddVacation = ({ currentUser }) => {
+const AddVacationPage = ({ currentUser }) => {
     const [description, setDescription] = useState();
     const [destination, setDestination] = useState();
     const [image, setImage] = useState();
@@ -67,13 +66,9 @@ const AddVacation = ({ currentUser }) => {
             }),
         };
 
-        try {
-            fetch('/vacation', requestOptions).then(() =>
-                history.push('/edit')
-            );
-        } catch (e) {
-            console.error(e);
-        }
+        fetch('/vacation', requestOptions).then(() =>
+            history.push('/edit')
+        );
     };
 
     return (
@@ -81,64 +76,74 @@ const AddVacation = ({ currentUser }) => {
             <Header>Add a new vacation</Header>
             <form onSubmit={handleSubmit}>
                 <Input
-                    label='Destination'
-                    type='text'
+                    label="Destination"
+                    type="text"
                     value={destination}
-                    onChange={(e) => { setDestination(e.target.value) }}
+                    onChange={(e) => {
+                        setDestination(e.target.value);
+                    }}
                 />
 
                 <Input
-                    height='90px'
+                    height="90px"
                     textarea
-                    rows='3'
-                    label='Description'
-                    type='text'
+                    rows="3"
+                    label="Description"
+                    type="text"
                     value={description}
-                    onChange={(e) => { setDescription(e.target.value) }}
+                    onChange={(e) => {
+                        setDescription(e.target.value);
+                    }}
                 />
 
                 <Input
-                    label='Add Image'
-                    type='file'
+                    label="Add Image"
+                    type="file"
                     onChange={handleFileInputChange}
                 />
 
                 <Input
-                    label='Starting Date'
-                    type='date'
+                    label="Starting Date"
+                    type="date"
                     value={startingDate}
-                    onChange={(e) => { setStartingDate(e.target.value) }}
+                    onChange={(e) => {
+                        setStartingDate(e.target.value);
+                    }}
                 />
 
                 <Input
-                    label='Ending Date'
-                    type='date'
+                    label="Ending Date"
+                    type="date"
                     value={endingDate}
-                    onChange={(e) => { setEndingDate(e.target.value) }}
+                    onChange={(e) => {
+                        setEndingDate(e.target.value);
+                    }}
                 />
 
                 <Input
-                    label='Price'
-                    type='number'
+                    label="Price"
+                    type="number"
                     value={price}
-                    onChange={(e) => { setPrice(e.target.value) }}
+                    onChange={(e) => {
+                        setPrice(e.target.value);
+                    }}
                 />
 
-                <Button type='button' medium light onClick={clearForm}>
+                <Button type="button" medium light onClick={clearForm}>
                     cancel
                 </Button>
 
-                <Button type='submit' medium>
+                <Button type="submit" medium>
                     Add
                 </Button>
             </form>
             {isLoading && <Spinner />}
-            {image && !isLoading && <img src={image} alt='preview' />}
+            {image && !isLoading && <img src={image} alt="preview" />}
         </Container>
     );
 };
 
-export default AddVacation;
+export default AddVacationPage;
 
 const Container = styled.div`
     width: 100%;

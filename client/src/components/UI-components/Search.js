@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import Button from './Button';
-import Input from './Input';
-
+import Button from '../UI-components/Button';
+import Input from '../UI-components/Input';
 
 const Search = ({ setVacations, getVacations }) => {
     const [description, setDescription] = useState();
@@ -14,7 +13,7 @@ const Search = ({ setVacations, getVacations }) => {
         setDescription('');
         setStartingDate('');
         setEndingDate('');
-        getVacations();
+        getVacations('');
     };
 
     const searchVacations = () => {
@@ -23,12 +22,8 @@ const Search = ({ setVacations, getVacations }) => {
         )
             .then((res) => res.json())
             .then(
-                (result) => {
-                    setVacations(result);
-                },
-                (error) => {
-                    console.error(error);
-                }
+                (result) => setVacations(result),
+                (error) => console.error(error)
             );
     };
 
@@ -38,27 +33,21 @@ const Search = ({ setVacations, getVacations }) => {
                 label="description"
                 type="text"
                 value={description}
-                onChange={(e) => {
-                    setDescription(e.target.value);
-                }}
+                onChange={(e) => setDescription(e.target.value)}
             />
 
             <Input
                 label="Starting Date"
                 type="date"
                 value={startingDate}
-                onChange={(e) => {
-                    setStartingDate(e.target.value);
-                }}
+                onChange={(e) => setStartingDate(e.target.value)}
             />
 
             <Input
                 label="Ending date"
                 type="date"
                 value={endingDate}
-                onChange={(e) => {
-                    setEndingDate(e.target.value);
-                }}
+                onChange={(e) => setEndingDate(e.target.value)}
             />
 
             <div className="buttonsDiv">

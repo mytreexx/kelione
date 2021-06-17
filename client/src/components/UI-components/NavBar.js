@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import logo from '../assets/logoIcon.jpg';
-import Button from './Button';
+import logo from '../../assets/logoIcon.jpg';
+import Button from '../UI-components/Button';
 
 
 const NavBar = ({ currentUser, logout }) => {
@@ -14,9 +14,8 @@ const NavBar = ({ currentUser, logout }) => {
 
                 {currentUser === 'admin' && (
                     <>
-                        <Link to='/edit'>Edit vacations</Link>
-
-                        <Link to='/graph'>Follower graph</Link>
+                        <Link to="/edit">Edit vacations</Link>
+                        <Link to="/graph">Follower graph</Link>
                     </>
                 )}
             </div>
