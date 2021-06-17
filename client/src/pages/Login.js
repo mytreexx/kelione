@@ -35,7 +35,7 @@ const Login = ({ onUserChange, currentUser }) => {
             }),
         };
 
-        fetch(`http://localhost:5000/login`, requestOptions).then(
+        fetch(`/login`, requestOptions).then(
             (response) => {
                 if (response.ok === false) {
                     response

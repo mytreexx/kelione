@@ -19,7 +19,7 @@ const Search = ({ setVacations, getVacations }) => {
 
     const searchVacations = () => {
         fetch(
-            `http://localhost:5000/?searchTerm=${description}&startingDate=${startingDate}&endingDate=${endingDate}`
+            `/?searchTerm=${description}&startingDate=${startingDate}&endingDate=${endingDate}`
         )
             .then((res) => res.json())
             .then(

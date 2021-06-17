@@ -34,7 +34,7 @@ const Vacations = ({ currentUser }) => {
             }),
         };
 
-        fetch(`http://localhost:5000/vacations`, requestOptions)
+        fetch(`/vacations`, requestOptions)
             .then((result) => result.json())
             .then((result) => {
                 setVacations(result.vacations);
@@ -60,7 +60,7 @@ const Vacations = ({ currentUser }) => {
         };
 
         try {
-            fetch('http://localhost:5000/vacation', requestOptions);
+            fetch('/vacation', requestOptions);
         } catch (e) {
             console.error(e);
         }
@@ -80,7 +80,7 @@ const Vacations = ({ currentUser }) => {
         };
 
         try {
-            fetch('http://localhost:5000/vacation', requestOptions);
+            fetch('/vacation', requestOptions);
         } catch (e) {
             console.error(e);
         }
@@ -98,7 +98,7 @@ const Vacations = ({ currentUser }) => {
             }),
         };
 
-        fetch('http://localhost:5000/follow', requestOptions);
+        fetch('/follow', requestOptions);
 
         if (isFollowed) {
             setFollowedVacations(

@@ -68,7 +68,7 @@ const AddVacation = ({ currentUser }) => {
         };
 
         try {
-            fetch('http://localhost:5000/vacation', requestOptions).then(() =>
+            fetch('/vacation', requestOptions).then(() =>
                 history.push('/edit')
             );
         } catch (e) {

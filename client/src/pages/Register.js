@@ -41,7 +41,7 @@ const Register = ({ currentUser }) => {
             }),
         };
 
-        fetch(`http://localhost:5000/register`, requestOptions).then(
+        fetch(`/register`, requestOptions).then(
             (response) => {
                 if (response.ok === false) {
                     response

@@ -17,7 +17,7 @@ const Graph = ({ currentUser }) => {
 
     const [vacationFollowers, setVacationFollowers] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/vacations/graph`)
+        fetch(`/vacations/graph`)
             .then((res) => res.json())
             .then(
                 (result) => {
