@@ -8,6 +8,7 @@ import VacationCard from '../UI-components/VacationCard';
 import Spinner from '../UI-components/Spinner';
 import Header from '../UI-components/Header';
 import Search from '../UI-components/Search';
+import isAdmin from '../../utils';
 
 
 const VacationsPage = ({ currentUser }) => {
@@ -17,7 +18,7 @@ const VacationsPage = ({ currentUser }) => {
 
     const history = useHistory();
 
-    if (currentUser === 'admin') {
+    if (isAdmin(currentUser)) {
         history.push('/edit');
     } else if (currentUser) {
         history.push('/vacations');
@@ -154,7 +155,7 @@ const VacationsPage = ({ currentUser }) => {
                 </>
             )}
 
-            {currentUser === 'admin' && (
+            {isAdmin(currentUser) && (
                 <IconContainer>
                     <Link to="/new-vacation">
                         <PlusCircleIcon size={75} />

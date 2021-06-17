@@ -8,6 +8,7 @@ import Button from '../UI-components/Button';
 import Input from '../UI-components/Input';
 import Header from '../UI-components/Header';
 import logo from '../../assets/logoIcon.jpg';
+import isAdmin from '../../utils';
 
 
 const RegisterPage = ({ currentUser }) => {
@@ -19,7 +20,7 @@ const RegisterPage = ({ currentUser }) => {
 
     const history = useHistory();
 
-    if (currentUser === 'admin') {
+    if (isAdmin(currentUser)) {
         history.push('/edit');
     } else if (currentUser) {
         history.push('/vacations');

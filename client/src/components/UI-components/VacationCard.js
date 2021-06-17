@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { HeartIcon, HeartFillIcon, TrashIcon, PencilIcon, CheckCircleIcon, XCircleIcon } from '@primer/octicons-react';
+import isAdmin from '../../utils';
 
 const VacationCard = ({
     id,
@@ -88,7 +89,7 @@ const VacationCard = ({
                         <strong>{destinationInput}</strong>
                     )}
 
-                    {currentUser === 'admin' ? (
+                    {isAdmin(currentUser) ? (
                         <span>
                             {editMode ? (
                                 <>

@@ -4,11 +4,12 @@ import { Link, useHistory } from 'react-router-dom';
 
 import logo from '../../assets/logoIcon.jpg';
 import Button from '../UI-components/Button';
+import isAdmin from '../../utils';
 
 const LandingPage = ({ currentUser }) => {
     const history = useHistory();
 
-    if (currentUser === 'admin') {
+    if (isAdmin(currentUser)) {
         history.push('/edit');
     } else if (currentUser) {
         history.push('/vacations');

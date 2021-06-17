@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logoIcon.jpg';
 import Button from '../UI-components/Button';
+import isAdmin from '../../utils';
 
 
 const NavBar = ({ currentUser, logout }) => {
@@ -12,7 +13,7 @@ const NavBar = ({ currentUser, logout }) => {
                 <img src={logo} alt='logo' />
                 <strong>kelionė</strong>
 
-                {currentUser === 'admin' && (
+                {isAdmin(currentUser) && (
                     <>
                         <Link to="/edit">Edit vacations</Link>
                         <Link to="/graph">Follower graph</Link>
