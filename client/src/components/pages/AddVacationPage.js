@@ -77,6 +77,7 @@ const AddVacationPage = ({ currentUser }) => {
             <Header>Add a new vacation</Header>
             <form onSubmit={handleSubmit}>
                 <Input
+                    required
                     label="Destination"
                     type="text"
                     value={destination}
@@ -84,6 +85,7 @@ const AddVacationPage = ({ currentUser }) => {
                 />
 
                 <Input
+                    required
                     height="90px"
                     textarea
                     rows="3"
@@ -94,12 +96,14 @@ const AddVacationPage = ({ currentUser }) => {
                 />
 
                 <Input
+                    required
                     label="Add Image"
                     type="file"
                     onChange={handleFileInputChange}
                 />
 
                 <Input
+                    required
                     label="Starting Date"
                     type="date"
                     value={startingDate}
@@ -107,6 +111,7 @@ const AddVacationPage = ({ currentUser }) => {
                 />
 
                 <Input
+                    required
                     label="Ending Date"
                     type="date"
                     value={endingDate}
@@ -114,6 +119,7 @@ const AddVacationPage = ({ currentUser }) => {
                 />
 
                 <Input
+                    required
                     label="Price"
                     type="number"
                     value={price}

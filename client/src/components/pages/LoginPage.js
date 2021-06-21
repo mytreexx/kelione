@@ -9,7 +9,7 @@ import Input from '../UI-components/Input';
 import Header from '../UI-components/Header';
 import logo from '../../assets/logoIcon.jpg';
 import { isAdmin } from '../../utils';
-import {login} from '../../services';
+import { login } from '../../services';
 
 
 const LoginPage = ({ onUserChange, currentUser }) => {
@@ -71,6 +71,7 @@ const LoginPage = ({ onUserChange, currentUser }) => {
                 <Header>Log in to kelionė</Header>
 
                 <Input
+                    required
                     label="Username"
                     type="text"
                     value={username}
@@ -78,6 +79,7 @@ const LoginPage = ({ onUserChange, currentUser }) => {
                 />
 
                 <Input
+                    required
                     label="Password"
                     type="password"
                     value={password}

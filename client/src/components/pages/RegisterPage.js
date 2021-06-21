@@ -42,7 +42,7 @@ const RegisterPage = ({ currentUser }) => {
                 confirmPassword,
             }),
         };
-        
+
         register(requestOptions)
             .then((response) => {
                 if (response.ok) {
@@ -74,6 +74,7 @@ const RegisterPage = ({ currentUser }) => {
                 <Header>Create your account</Header>
 
                 <Input
+                    required
                     label="First name"
                     type="text"
                     value={firstName}
@@ -81,6 +82,7 @@ const RegisterPage = ({ currentUser }) => {
                 />
 
                 <Input
+                    required
                     label="Last name"
                     type="text"
                     value={lastName}
@@ -88,6 +90,7 @@ const RegisterPage = ({ currentUser }) => {
                 />
 
                 <Input
+                    required
                     label="Username"
                     type="text"
                     value={username}
@@ -95,6 +98,7 @@ const RegisterPage = ({ currentUser }) => {
                 />
 
                 <Input
+                    required
                     label="Password"
                     type="password"
                     value={password}
@@ -102,6 +106,7 @@ const RegisterPage = ({ currentUser }) => {
                 />
 
                 <Input
+                    required
                     label="Confirm password"
                     type="password"
                     value={confirmPassword}
